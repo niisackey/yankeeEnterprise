@@ -1,0 +1,2632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>K Yankee Enterprise - Agriculture & Tourism Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --primary-yellow: #FFEB3B;
+            --dark-charcoal: #2b2b2b;
+            --light-gray: #f8f8f8;
+            --white: #ffffff;
+            --off-white: #f5f5f5;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-charcoal);
+            overflow-x: hidden;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--primary-yellow);
+            color: var(--primary-red);
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-red);
+            color: var(--primary-yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--primary-yellow);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-yellow);
+            color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        /* Pill Navbar Styles */
+        .pill-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(43, 43, 43, 0.1);
+            flex-wrap: wrap;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .pill-navbar.scrolled {
+            background: rgba(99, 96, 96, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pill-navbar .logo img {
+            width: 100px;
+        }
+
+        .pill-navbar .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .pill-navbar .nav-links {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            display: flex;
+            padding: 0.5rem 1rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pill-navbar .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: 0.3s;
+            border-radius: 20px;
+            display: block;
+            font-size: 1rem;
+        }
+
+        .pill-navbar .nav-links a:hover,
+        .pill-navbar .nav-links a.active {
+            background-color: var(--primary-yellow);
+            color: var(--primary-red);
+        }
+
+        .pill-navbar .actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pill-navbar .actions a {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .pill-navbar .actions .login {
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .pill-navbar .actions .login:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .pill-navbar .actions .cta {
+            background-color: var(--primary-yellow);
+            color: var(--primary-red);
+        }
+
+        .pill-navbar .actions .cta:hover {
+            background-color: var(--primary-red);
+            color: var(--primary-yellow);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 992px) {
+            .pill-navbar {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            
+            
+            .pill-navbar .nav-toggle {
+                display: block;
+                margin-left: auto;
+            }
+            
+            .pill-navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin: 1rem 0;
+                border-radius: 12px;
+                background-color: rgba(43, 43, 43, 0.95);
+            }
+            
+            .pill-navbar .nav-links.active {
+                display: flex;
+            }
+            
+            .pill-navbar .actions {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+                display: none;
+            }
+            
+            .pill-navbar .actions.active {
+                display: flex;
+            }
+        }
+
+        /* Hero Section - Fixed for Mobile */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(211, 47, 47, 0.6) 0%, rgba(211, 47, 47, 0.3) 50%, rgba(211, 47, 47, 0.1) 100%),
+                url('assets/images/farm.jpg') no-repeat center center;
+            background-size: cover;
+            transform: translateY(0);
+            transition: transform 0.1s linear;
+        }
+
+        /* Mobile view (max-width: 767px) */
+        @media (max-width: 767px) {
+            .hero-background {
+                position: fixed !important;
+                height: 100dvh;
+                width: 100vw;
+                left: 0;
+                top: 0;
+            }
+            
+            .hero {
+                height: 100dvh;
+                min-height: unset;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--off-white);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(211, 47, 47, 0.2);
+            z-index: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--primary-yellow);
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-yellow);
+        }
+
+        .about-text {
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 235, 59, 0.1);
+            border: 2px solid var(--primary-yellow);
+            border-radius: 8px;
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .value-item:hover::before {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .value-item:hover .value-icon {
+            color: var(--primary-yellow);
+            transform: scale(1.1);
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .value-item:hover .value-title {
+            color: var(--primary-yellow);
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: linear-gradient(rgba(255, 235, 59, 0.1), rgba(255, 235, 59, 0.1)), var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievements::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+        }
+
+        .achievement-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .achievement-number span {
+            font-size: 2rem;
+            vertical-align: super;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-desc {
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+        }
+
+        /* Products Section */
+        .products {
+            background: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+       
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header .section-title {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-overlay {
+            background: linear-gradient(to top, rgba(211, 47, 47, 0.9), transparent);
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .learn-more {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .product-card:hover .learn-more {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .learn-more i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .learn-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Real Estate Section */
+        .real-estate {
+            background: linear-gradient(rgba(255, 235, 59, 0.05), var(--white));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .real-estate::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .real-estate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .property-card {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 500px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+        
+        .property-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+        
+        .property-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .property-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .property-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+            z-index: 1;
+        }
+        
+        .property-card:hover .property-image {
+            transform: scale(1.05);
+        }
+        
+        .property-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            color: var(--white);
+            z-index: 3;
+        }
+        
+        .property-card:hover .property-overlay {
+            background: rgba(211, 47, 47, 0.85);
+        }
+        
+        .property-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: var(--primary-yellow);
+            color: var(--primary-red);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            z-index: 4;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .property-title {
+            font-size: 1.8rem;
+            
+            margin-bottom: 15px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .property-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--primary-yellow);
+            border-radius: 2px;
+        }
+        
+        .property-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .property-location i {
+            color: var(--primary-yellow);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .property-description {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .property-features {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 30px;
+        }
+        
+        .feature i {
+            color: var(--primary-yellow);
+            font-size: 1.2rem;
+        }
+        
+        .property-cta {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary-yellow);
+            color: var(--primary-red);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+        
+        .property-cta:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        /* Investment Highlight */
+        .investment-highlight {
+            background: linear-gradient(135deg, var(--primary-red), #b32424);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-top: 4rem;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .investment-content {
+            flex: 1;
+            padding-right: 2rem;
+            z-index: 2;
+        }
+        
+        .investment-image {
+            flex: 1;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            position: relative;
+        }
+        
+        .investment-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .investment-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .investment-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .investment-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .investment-features {
+            margin-bottom: 2rem;
+        }
+        
+        .investment-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .investment-feature i {
+            color: var(--primary-yellow);
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--dark-charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: var(--white);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+        }
+
+        .services .section-title {
+            color: var(--white);
+        }
+
+        .services .section-title::after {
+            background: var(--primary-yellow);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+            height: 425px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-yellow);
+            background: rgba(211, 47, 47, 0.1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-title {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-desc {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-btn {
+            background: var(--primary-yellow);
+            color: var(--dark-charcoal);
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .service-card:hover .service-btn {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        /* Partnerships Section */
+        .partnerships {
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partnerships::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-yellow);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 3rem;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 70px;
+            width: auto;
+            height: auto;
+        }
+
+        /* Testimonials Section - Carousel */
+        .testimonials {
+            background: var(--primary-red);
+            position: relative;
+            overflow: hidden;
+            padding: 7rem 1.5rem;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .testimonials .section-title {
+            color: var(--white);
+            text-align: center;
+        }
+
+        .testimonials .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-yellow);
+        }
+
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            min-width: 100%;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            position: relative;
+            margin-top: 50px;
+            
+        }
+
+        .client-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-yellow);
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .client-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--dark-charcoal);
+            margin: 2rem 0;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .rating i {
+            color: var(--primary-yellow);
+            font-size: 1.2rem;
+            margin: 0 2px;
+        }
+
+        .client-info {
+            text-align: center;
+        }
+
+        .client-name {
+            font-weight: 700;
+            color: var(--primary-red);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .client-role {
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary-yellow);
+            transform: scale(1.2);
+        }
+
+        .testimonial-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .testimonial-arrow:hover {
+            background: var(--primary-yellow);
+            color: var(--primary-red);
+        }
+
+        .testimonial-prev {
+            left: -70px;
+        }
+
+        .testimonial-next {
+            right: -70px;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        #front{
+            color: red;
+             font-size: larger;
+        }
+        #back{
+            color: rgb(211, 211, 22);
+            font-size: larger;
+        }
+
+        .cta-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3') no-repeat center center;
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+    font-family: Arial, sans-serif;
+    
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    line-height: 1.6;
+    
+}
+
+.contact-info p {
+    margin: 10px 0;
+}
+
+.contact-info i {
+    
+    margin-right: 8px;
+}
+
+.contact-info a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-red);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-yellow);
+            color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-charcoal);
+            color: var(--white);
+            padding: 5rem 0 0;
+            position: relative;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-yellow);
+        }
+
+        .footer-about {
+            position: relative;
+        }
+
+        .footer-about h3 {
+            background: linear-gradient(90deg, var(--primary-yellow), transparent);
+            padding: 5px 15px;
+            margin-left: -15px;
+        }
+
+        .footer-about p {
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--primary-yellow);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-yellow);
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover i {
+            color: var(--primary-red);
+        }
+
+        .footer-newsletter {
+            position: relative;
+        }
+
+        .footer-newsletter form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-newsletter input {
+            padding: 12px 15px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid var(--primary-yellow);
+            color: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .footer-newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-newsletter button {
+            background: var(--primary-red);
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-newsletter button:hover {
+            background: var(--primary-yellow);
+            color: var(--primary-red);
+        }
+
+        .footer-bottom {
+            padding: 2rem 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 1rem;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .legal-links a:hover {
+            color: var(--primary-yellow);
+        }
+
+        /* Google Map Container */
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            height: 300px;
+            margin-top: 20px;
+            border: 3px solid var(--primary-yellow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(20%) contrast(110%) saturate(120%);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .testimonial-arrow {
+                top: auto;
+                bottom: -70px;
+                transform: none;
+            }
+
+            
+            
+            .testimonial-prev {
+                left: 40%;
+            }
+            
+            .testimonial-next {
+                right: 40%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .about-image {
+                height: 500px;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .property-card {
+                height: 500px !important;
+            }
+            
+            .investment-highlight {
+                flex-direction: column;
+            }
+            
+            .investment-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .footer-top{
+                margin: 12px;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .about-image {
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+            }
+            
+            .about-content {
+                padding: 2rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .testimonial-arrow {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .testimonial-prev {
+                left: 30%;
+            }
+            
+            .testimonial-next {
+                right: 30%;
+            }
+            
+            .property-card {
+                height: 400px;
+            }
+            
+            .property-overlay {
+                padding: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .testimonial-prev {
+                left: 25%;
+            }
+            
+            .testimonial-next {
+                right: 25%;
+            }
+            
+            .property-card {
+                height: 350px;
+            }
+            
+            .property-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* form */
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0c0;
+            margin-bottom: 30px;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        
+
+        
+        /* Modal System */
+       /* Base Modal Overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Show Modal */
+.modal.active {
+    display: flex;
+}
+
+/* Modal Container */
+.modal-content {
+    background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+    color: #fff;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    padding: 25px 30px;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+    animation: fadeIn 0.4s ease-in-out;
+    position: relative;
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.4);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #ffc107;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #ff0000;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.close-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Modal Body */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Labels & Inputs */
+.form-group label {
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #ffc107;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #444;
+    background-color: #2e2e2e;
+    color: #fff;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95em;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.form-control:focus {
+    border-color: #ff0000;
+    box-shadow: 0 0 5px #ff0000;
+}
+
+/* Textarea */
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+.checkbox-group input[type="checkbox"] {
+    accent-color: #ff0000;
+}
+
+/* Footer Buttons */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Buttons */
+.modal-btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.modal-btn.primary {
+    background: linear-gradient(145deg, #ff0000, #b80000);
+    color: #fff;
+}
+.modal-btn.primary:hover {
+    background: #e60000;
+    transform: scale(1.02);
+}
+
+.modal-btn.secondary {
+    background: #ffc107;
+    color: #000;
+}
+.modal-btn.secondary:hover {
+    background: #e6b800;
+    transform: scale(1.02);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive Layout */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+    }
+
+    .modal-title {
+        font-size: 1.3em;
+    }
+
+    .form-control {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .modal-btn {
+        width: 100%;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Pill Style Navbar -->
+    <header class="pill-navbar" id="header">
+        <a href="#" class="logo">
+            <img src="https://via.placeholder.com/100x40?text=Logo" alt="K Yankee Enterprise">
+        </a>
+        <button class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-links" id="navMenu">
+            <a href="#hero" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#real-estate">Real Estate</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="actions" id="navActions">
+            <a href="#cta" class="cta">Talk to us Today for a quote</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background" id="heroBackground"></div>
+        <div class="hero-content">
+            <h1>Innovative Agricultural, Real Estate, Hospitality & Tourism Solutions</h1>
+            <p>To be the leading provider of innovative solutions, exceeding customer expectation and setting industry standards for quality and excellence</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Explore Our Products</a>
+                <a href="#contact" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+        <div class="scroll-down" id="scrollDown">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1534337621606-e3df5ee0e97f?ixlib=rb-4.0.3" alt="K Yankee Farm">
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title">About K Yankee Business Agency</h2>
+                    <p class="about-text">
+                        Kofi Yankee Business Agency, established in 2021 and headquartered in Koforidua, Ghana, is a 
+                        dynamic multi-sector company operating across agricultural, real estate, hospitality, and tourism 
+                        industry. Founded by visionary entrepreneur Eugene Boateng, our agency is rooted in a passion for 
+                        sustainability, quality, and innovation. <br><span id="front">Our </span> <span id="back">Mission :</span><br>
+                        To deliver exceptional value to our customers through innovative products and services, 
+built on a foundation of quality, integrity, and customer satisfaction. <br>
+                        <span id="front">Target</span> <span id="back">Market :</span><br>
+                        Our primary clients include small to medium-sized businesses in the agriculture, real estate, hospitality 
+and tourism sectors, as well as individual investors seeking sustainable and profitable real estate 
+ventures in Ghana.
+                    </p>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <i class="fas fa-lightbulb value-icon"></i>
+                            <h3 class="value-title">Innovation</h3>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-star value-icon"></i>
+                            <h3 class="value-title">Quality</h3>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-handshake value-icon"></i>
+                            <h3 class="value-title">Integrity</h3>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-smile value-icon"></i>
+                            <h3 class="value-title">Customer Focus</h3>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-users value-icon"></i>
+                            <h3 class="value-title">Teamwork</h3>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-leaf value-icon"></i>
+                            <h3 class="value-title">Sustainability</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Achievements & Milestones</h2>
+                <p>Celebrating our journey of growth and impact</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <div class="achievement-number">500<span>+</span></div>
+                    <h3 class="achievement-title">Livestock Supplied</h3>
+                    <p class="achievement-desc">Premium cattle delivered to farms across Ghana</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <div class="achievement-number">15<span>k</span></div>
+                    <h3 class="achievement-title">Tourists Hosted</h3>
+                    <p class="achievement-desc">International visitors experienced Ghana with us</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="achievement-number">50<span>+</span></div>
+                    <h3 class="achievement-title">Industry Partnerships</h3>
+                    <p class="achievement-desc">Collaborations with leading agricultural and tourism organizations</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="achievement-number">12</div>
+                    <h3 class="achievement-title">Awards Won</h3>
+                    <p class="achievement-desc">Recognized for excellence in agriculture and tourism</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Agricultural Products</h2>
+                <p>Premium quality livestock products from our sustainable farms</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3" alt="Fresh Meat" class="product-image">
+                    <div class="product-overlay">
+                        <h3 class="product-title">Premium Meat</h3>
+                        <p class="product-desc">Beef, pork, lamb and more - fresh, quality-assured</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/milk.jpg" alt="Dairy Products" class="product-image">
+                    <div class="product-overlay">
+                        <h3 class="product-title">Dairy Products</h3>
+                        <p class="product-desc">Fresh milk, cheese, yogurt and butter from pasture-fed cows</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?ixlib=rb-4.0.3" alt="Farm Fresh Eggs" class="product-image">
+                    <div class="product-overlay">
+                        <h3 class="product-title">Farm Fresh Eggs</h3>
+                        <p class="product-desc">Free-range eggs from our ethically raised poultry</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Estate Section -->
+    <section class="real-estate" id="real-estate">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Real Estate Ventures</h2>
+                <p>Building futures and creating exceptional living spaces across Ghana</p>
+            </div>
+            
+            <div class="real-estate-grid">
+                <!-- Residential Development Card -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <img src="assets/images/villagio.jpg" alt="Luxury Apartments" class="property-image">
+                        <div class="property-image-overlay"></div>
+                    </div>
+                    <div class="property-badge">Residential</div>
+                    <div class="property-overlay">
+                        <h3 class="property-title">Luxury Apartments</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nationwide Service</span>
+                        </div>
+                        <p class="property-description"></p>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span>3-4 Bedrooms Apartments</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-house"></i>
+                                <span>Villas</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-building"></i>
+                                <span>Town Houses</span>
+                            </div>
+                        </div>
+                        <a href="#" class="property-cta">View Properties</a>
+                    </div>
+                </div>
+                
+                <!-- Commercial Development Card -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Office Complex" class="property-image">
+                        <div class="property-image-overlay"></div>
+                    </div>
+                    <div class="property-badge">Commercial</div>
+                    <div class="property-overlay">
+                        <h3 class="property-title">Premium Office Spaces</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nationwide Service</span>
+                        </div>
+                        <p class="property-description">.</p>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-building"></i>
+                                <span>12 Floors</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-desktop"></i>
+                                <span>Smart Offices</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-warehouse"></i>
+                                <span>Warehouse Space</span>
+                            </div>
+                        </div>
+                        <a href="#" class="property-cta">Explore Spaces</a>
+                    </div>
+                </div>
+                
+                <!-- Property Management Card -->
+                <div class="property-card">
+                    <div class="property-image-container">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Property Management" class="property-image">
+                        <div class="property-image-overlay"></div>
+                    </div>
+                    <div class="property-badge">Management</div>
+                    <div class="property-overlay">
+                        <h3 class="property-title">Professional Management</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nationwide Service</span>
+                        </div>
+                        <p class="property-description"></p>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-tools"></i>
+                                <span>24/7 Maintenance</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-file-contract"></i>
+                                <span>Leasing Services</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Facility Security</span>
+                            </div>
+                        </div>
+                        <a href="#" class="property-cta">Manage Properties</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Investment Highlight -->
+            <div class="investment-highlight">
+                <div class="investment-content">
+                    <h3 class="investment-title">Premium Investment Opportunities</h3>
+                    <p class="investment-subtitle">Join our exclusive real estate investment portfolio with exceptional returns</p>
+                    
+                    <div class="investment-features">
+                        <div class="investment-feature">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Average 12-18% annual ROI on development projects</span>
+                        </div>
+                        <div class="investment-feature">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <span>Flexible investment options from $25,000</span>
+                        </div>
+                        <div class="investment-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Fully secured investments with property collateral</span>
+                        </div>
+                        <div class="investment-feature">
+                            <i class="fas fa-home"></i>
+                            <span>Portfolio includes residential, commercial and mixed-use</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary">Request Investment Portfolio</a>
+                </div>
+                
+                <div class="investment-image">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Luxury Investment Villa">
+                    <div class="investment-image-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hospitality & Tourism Services</h2>
+                <p>Experience Ghana with our premium travel solutions</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3" alt="Travel Planning" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Custom Travel Planning</h3>
+                        <p class="service-desc">Tailored itineraries for unforgettable Ghanaian experiences</p>
+                        <a href="#" class="service-btn">Plan Your Trip</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3" alt="Guided Tours" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Cultural & Adventure Tours</h3>
+                        <p class="service-desc">Explore Ghana's heart and soul with expert local guides</p>
+                        <a href="#" class="service-btn">Discover Tours</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3" alt="Hotel Booking" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Hotel Booking Services</h3>
+                        <p class="service-desc">Find the perfect accommodation for your Ghana adventure</p>
+                        <a href="#" class="service-btn">Book Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3" alt="Flight Reservations" class="service-image">
+                    <div class="service-content">
+                        <h3 class="service-title">Flight Reservations</h3>
+                        <p class="service-desc">Seamless travel arrangements to and within Ghana</p>
+                        <a href="#" class="service-btn">Find Flights</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships Section -->
+    <section class="partnerships" id="partnerships">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Partnerships & Affiliations</h2>
+                <p>Collaborating with industry leaders to deliver excellence</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png" alt="Partner 1">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png" alt="Partner 2">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/505px-Apple_logo_black.svg.png" alt="Partner 3">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/2560px-LinkedIn_Logo.svg.png" alt="Partner 4">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/2560px-Microsoft_logo_%282012%29.svg.png" alt="Partner 5">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="Partner 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+            <div class="testimonial-container">
+                <div class="testimonial-slider" id="testimonialSlider">
+                    <div class="testimonial-card">
+                        <div class="client-photo">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3" alt="Client">
+                        </div>
+                        <p class="testimonial-text">
+                            "K Yankee Enterprise exceeded our expectations in every way. The quality of their agricultural products 
+                            is unmatched, and their tour services provided an authentic Ghanaian experience we'll never forget. 
+                            Their team's professionalism and attention to detail made all the difference."
+                        </p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4 class="client-name">Ama Mensah</h4>
+                            <p class="client-role">Restaurant Owner, Accra</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="client-photo">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3" alt="Client">
+                        </div>
+                        <p class="testimonial-text">
+                            "Our partnership with K Yankee has transformed our hotel's offerings. Their farm-to-table approach 
+                            ensures we serve the freshest ingredients, and their tourism packages bring us international guests 
+                            year-round. Truly a game-changer for our business!"
+                        </p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4 class="client-name">Kwame Asante</h4>
+                            <p class="client-role">Hotel Manager, Kumasi</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="client-photo">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3" alt="Client">
+                        </div>
+                        <p class="testimonial-text">
+                            "The cultural tour organized by K Yankee was the highlight of our trip to Ghana. Their guides were 
+                            knowledgeable, passionate, and created an immersive experience. We felt like we truly connected with 
+                            the local culture. Will definitely recommend to friends and family!"
+                        </p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4 class="client-name">Sarah Johnson</h4>
+                            <p class="client-role">Tourist from Canada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-index="0"></div>
+                    <div class="testimonial-dot" data-index="1"></div>
+                    <div class="testimonial-dot" data-index="2"></div>
+                </div>
+                <div class="testimonial-arrow testimonial-prev" id="testimonialPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="testimonial-arrow testimonial-next" id="testimonialNext">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="cta-background"></div>
+        <div class="cta-content">
+            <h2>Ready to Experience Excellence?</h2>
+            <p>Partner with Ghana's premier agriculture and tourism provider</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary" id="contactModalBtn">Request a Quote</a>
+
+
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+    <div class="modal-content">
+        <form action="https://formspree.io/f/xvgrvrvd" method="POST" id="contactForm">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fas fa-envelope"></i> Contact Us</h3>
+                <button type="button" class="close-btn">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="contactName">Full Name</label>
+                    <input type="text" id="contactName" name="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactEmail">Email Address</label>
+                    <input type="email" id="contactEmail" name="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactPhone">Phone Number</label>
+                    <input type="tel" id="contactPhone" name="phone" class="form-control" placeholder="Enter your phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactSubject">Subject</label>
+                    <input type="text" id="contactSubject" name="subject" class="form-control" placeholder="What is this regarding?">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="message" class="form-control" placeholder="Type your message here..." required></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="contactAgree" name="consent">
+                    <label for="contactAgree">I agree to receive follow-up communications</label>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="modal-btn secondary close-btn">Cancel</button>
+                <button type="submit" class="modal-btn primary">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col footer-about">
+                    <h3>Why Choose US</h3>
+                    <p>Invest in our eco-friendly farm and estates to gain long-term returns while supporting high yields and low environmental impact.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="#products"><i class="fas fa-box-open"></i> Products</a></li>
+                        <li><a href="#real-estate"><i class="fas fa-building"></i> Real Estate</a></li>
+                        <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-comments"></i> Testimonials</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-newsletter">
+                    <h3>locate Us</h3>
+                    <div class="contact-info">
+                        <p>
+                            <i class="fas fa-location-pin"></i>
+                            <strong>Koforidua, Eastern Region, Ghana</strong>
+                            <!-- <a href="tel:+233557712388">+233 557 712 388</a> -->
+                        </p>
+                        <p>
+                            <i class="fas fa-phone-alt"></i>
+                            <strong>Phone (Ghana):</strong>
+                            <a href="tel:+233557712388">+233 557 712 388</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone-alt"></i>
+                            <strong>Phone (UAE):</strong>
+                            <a href="tel:+971544038179">+971 544 038 179</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope"></i>
+                            <strong>Email:</strong>
+                            <a href="mailto:kofiyankeecompany@gmail.com">kofiyankeecompany@gmail.com</a>
+                        </p>
+                    </div>
+                    <div class="map-container">
+                        <!-- Google Map Embed -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15885.329579800555!2d-0.26464199999999996!3d5.603069999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9f7d3b8b1e0d%3A0x3c4e1b8e5b5a5a5a!2sKoforidua%2C%20Ghana!5e0!3m2!1sen!2sus!4v1716742267895!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 K Yankee Enterprise. All Rights Reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Pill Navbar Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navActions = document.getElementById('navActions');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navActions.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Parallax effect for hero
+            const scrollPosition = window.scrollY;
+            const heroBackground = document.getElementById('heroBackground');
+            heroBackground.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+            
+            // Back to top button visibility
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    navActions.classList.remove('active');
+                    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    
+                    // Update active link
+                    document.querySelectorAll('.pill-navbar .nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Set active link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.pill-navbar .nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll down arrow
+        const scrollDown = document.getElementById('scrollDown');
+        scrollDown.addEventListener('click', function() {
+            window.scrollTo({
+                top: window.innerHeight - 80,
+                behavior: 'smooth'
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Testimonials Carousel
+        const testimonialSlider = document.getElementById('testimonialSlider');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const testimonialPrev = document.getElementById('testimonialPrev');
+        const testimonialNext = document.getElementById('testimonialNext');
+        let currentSlide = 0;
+        const slideCount = document.querySelectorAll('.testimonial-card').length;
+
+        function showSlide(index) {
+            testimonialSlider.style.transform = `translateX(-${index * 100}%)`;
+            testimonialDots.forEach(dot => dot.classList.remove('active'));
+            testimonialDots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        testimonialDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(parseInt(dot.getAttribute('data-index')));
+            });
+        });
+
+        testimonialPrev.addEventListener('click', () => {
+            let newIndex = currentSlide - 1;
+            if (newIndex < 0) newIndex = slideCount - 1;
+            showSlide(newIndex);
+        });
+
+        testimonialNext.addEventListener('click', () => {
+            let newIndex = currentSlide + 1;
+            if (newIndex >= slideCount) newIndex = 0;
+            showSlide(newIndex);
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            let newIndex = currentSlide + 1;
+            if (newIndex >= slideCount) newIndex = 0;
+            showSlide(newIndex);
+        }, 5000);
+
+        // Initialize the first slide
+        showSlide(0);
+        
+        // Property card animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.property-card');
+            
+            cards.forEach((card, index) => {
+                // Initial state
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                // Animate in with delay
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + (index * 200));
+            });
+        });
+    </script>
+    <script src="assets/js/popup.js"></script>
+</body>
+</html>
