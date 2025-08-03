@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroBackgrounds = document.querySelectorAll('.hero-bg-slide');
     if (heroBackgrounds.length > 0) {
         const images = [
-            'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+            'assets/images/farm.jpg',  // Your local farm image
             'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
             'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
             'https://images.unsplash.com/photo-1516205651411-aef33a44f7c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
@@ -346,3 +346,10 @@ window.addEventListener('popstate', function() {
     });
     document.body.style.overflow = 'auto';
 });
+
+// Fix the heroImages array - clean it up and use correct path
+const heroImages = [
+    "assets/images/farm.jpg",             // Local farm image
+    "https://images.unsplash.com/photo-1534337621606-e3df5ee0e97f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+    "https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+];

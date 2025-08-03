@@ -20,6 +20,7 @@
   .pill-navbar {
     height: 110px;
   }
+  
 }
 
 .pill-navbar.scrolled {
@@ -31,6 +32,8 @@
 .pill-navbar .logo img {
   width: 100px;
 }
+
+
 
 .pill-navbar .nav-toggle {
   display: none;

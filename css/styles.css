@@ -109,7 +109,7 @@ section {
 
     
 
-        /* Hero Section - Fixed for Mobile */
+        /* Hero Section - Fixed for Mobile with Dark Overlay */
         .hero {
             height: 100vh;
             min-height: 700px;
@@ -127,7 +127,6 @@ section {
             width: 100%;
             height: 100%;
             z-index: 1;
-            
         }
 
         .hero-bg-slide {
@@ -139,12 +138,24 @@ section {
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed !important; /* Fixed: Changed from fixed to scroll */
+            background-attachment: fixed !important;
             transition: transform 1s cubic-bezier(.77,0,.18,1), opacity 1s;
             z-index: 1;
             opacity: 0;
             transform: translateX(100%);
             overflow: hidden;
+        }
+
+        /* Add dark overlay to hero images */
+        .hero-bg-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay - adjust opacity as needed */
+            z-index: 1;
         }
 
         .hero-bg-slide.active {
@@ -159,36 +170,10 @@ section {
             z-index: 1;
         }
 
-        /* Mobile view - Fixed positioning issues */
-        @media (max-width: 767px) {
-            .hero {
-                height: 100vh;
-                min-height: 100vh;
-                position: relative; /* Changed from fixed */
-            }
-            
-            .hero-background {
-                position: absolute; /* Changed from fixed */
-                height: 100%;
-                width: 100%;
-                left: 0;
-                top: 0;
-            }
-            
-            .hero-bg-slide {
-                background-attachment: scroll; /* Ensure scroll on mobile */
-                position: absolute;
-            }
-            
-            .hero-content {
-                margin-top: 80px !important;
-                padding: 0 1rem !important;
-            }
-        }
-
+        /* Ensure hero content appears above the overlay */
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 10; /* Increased z-index to appear above overlay */
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
@@ -387,12 +372,13 @@ section {
             color: var(--primary-yellow);
         }
 
-        /* Achievements Section */
+        /* Achievements Section - Complete Fix */
         .achievements {
-            background: linear-gradient(rgba(255, 235, 59, 0.1), rgba(255, 235, 59, 0.1)), var(--light-gray);
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
-            overflow: hidden;
-            height: 100vh;
+            overflow: visible;
+            /* Remove height: 100vh; and min-height that's causing issues */
         }
 
         .achievements::before {
@@ -407,58 +393,125 @@ section {
             opacity: 0.1;
         }
 
+        .achievements .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .achievements .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .achievements .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .achievements .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-yellow);
+        }
+
+        .achievements .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin: 0;
+        }
+
         .achievements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.4rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 0;
+            padding: 0;
         }
 
         .achievement-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 1.5rem;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .achievement-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2c5530, #4a7c59);
         }
 
         .achievement-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-red), #b32424);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
             font-size: 2rem;
-            color: var(--primary-red);
-            margin-bottom: 1.4rem;
         }
 
         .achievement-number {
-            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
             font-weight: 900;
             color: var(--primary-red);
-            margin-bottom: 0.5rem;
+            margin-bottom: 15px;
             line-height: 1;
         }
 
         .achievement-number span {
-            font-size: 1.7rem;
-            vertical-align: super;
+            font-size: 2rem;
+            color: #666;
         }
 
         .achievement-title {
-            font-size: 1rem;
-            color: var(--dark-charcoal);
-            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.2;
         }
 
         .achievement-desc {
-            color: var(--dark-charcoal);
-            opacity: 0.8;
-            font-size: .9rem;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+            text-align: center;
         }
 
         /* Products Section */
@@ -1251,6 +1304,7 @@ section {
             text-align: center;
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
+        
         }
 
         .footer-top {
@@ -1550,8 +1604,9 @@ section {
     }
     
     .property-card {
-        height: 560px !important;
+        height: 600px !important;
     }
+
     
     .investment-highlight {
         flex-direction: column;
@@ -1645,10 +1700,6 @@ section {
         width: 100%;
         max-width: 280px;
         text-align: center;
-    }
-
-    .partners-grid {
-        display: column;
     }
 }
 
